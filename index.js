@@ -13,6 +13,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(rateLimiter);
 
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  }));
+
 mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
